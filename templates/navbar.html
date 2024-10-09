@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calorie Counter</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="bg-gray-800">
+        <div class="container mx-auto flex justify-between items-center py-4">
+            <a class="text-white text-lg font-semibold" href="{% url 'index' %}">Calorie Tracker</a>
+            <button class="text-white lg:hidden focus:outline-none" type="button" onclick="toggleMenu()">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+            </button>
+            <div class="hidden lg:flex space-x-4" id="navbarNav">
+                <ul class="flex items-center space-x-4">
+                    <li><a class="text-white hover:bg-gray-700 px-3 py-2 rounded" href="{% url 'index' %}">Home</a></li>
+                    <li><a class="text-white hover:bg-gray-700 px-3 py-2 rounded" href="{% url 'foodentry' %}">food entry</a></li>
+                    <li><a class="text-white hover:bg-gray-700 px-3 py-2 rounded" href="{% url 'foodlist' %}">Foods</a></li>
+                    {% if user.is_authenticated %}
+                    <li><a class="text-white hover:bg-gray-700 px-3 py-2 rounded" href="{% url 'logout_user' %}">Logout</a></li>
+                    {% else %}
+                    <li><a class="text-white hover:bg-gray-700 px-3 py-2 rounded" href="{% url 'register' %}">Register</a></li>
+                    <li><a class="text-white hover:bg-gray-700 px-3 py-2 rounded" href="{% url 'login_user' %}">Login</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <script>
+        // Toggle mobile menu visibility
+        function toggleMenu() {
+            const navbarNav = document.getElementById('navbarNav');
+            navbarNav.classList.toggle('hidden');
+        }
+    </script>
+</body>
+</html>

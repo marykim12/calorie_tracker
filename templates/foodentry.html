@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}
+
+<title>Add Food</title>
+
+{% endblock %}
+
+
+{% block content %}
+<div class="max-w-md mx-auto bg-white p-20 rounded-lg shadow-md">
+<h1 class="text-center font-semibold text-xl">Know how much calories you're taking.</h1>
+<form method="POST" class="space-y-4">
+   {% csrf_token %}
+   <div class="font-bold">
+   {{ food_form.as_p }}
+   <button type="submit" 
+   class="w-full bg-purple-400 text-black font-semibold py-3 rounded text-lg">Add food</button>
+   </div>
+</form>
+</div>
+{% endblock %}

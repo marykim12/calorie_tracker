@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}
+
+<title>Log In</title>
+
+{% endblock %}
+
+
+{% block content %}
+<h1>Log in to you calorie tracker</h1>
+<form method="POST" >
+   {% csrf_token %}
+   {{ loginform.as_p}}
+   <button type="submit">Log In</button>
+
+</form>
+{% endblock %}
